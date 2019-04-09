@@ -34,6 +34,7 @@ void initialize_board(square board[NUM_ROWS][NUM_COLUMNS]){
  */
 int initialize_players(player players[]){
     int nump;
+    char tempname[10];
     innp:
     printf("Enter the number of players: \n");
     scanf("%d",&nump);
@@ -41,15 +42,15 @@ int initialize_players(player players[]){
         printf("There must be between 2 and 6 players\n");
         goto innp;
     }
-    for(int i=0;i<nump;i++){  
-        int p = 0;
-        printf("Enter Player's name: \n");
-        scanf("%s",players[p]);
-        p++;
+    int loop = nump + 1;
+ for(int i=0;i<loop;i++){  
         
-       
+        printf("Enter Player %d's name: ",i);
+        gets(players[i].name);
+    
     }
-        return 0;
+   
+     return 0;
 }
     
    
