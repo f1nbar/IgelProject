@@ -34,13 +34,7 @@ typedef struct player{
     int numTokensLastCol;
 }player;
 
-//declaring different struct id's to contain player information 
-struct player player1;
-struct player player2;
-struct player player3;
-struct player player4;
-struct player player5;
-struct player player6;
+
 
 
 
@@ -59,7 +53,7 @@ void initialize_board(square board[NUM_ROWS][NUM_COLUMNS]);
  * Output: The number of players of the game
  *
  */
-int initialize_players(struct player players[]);
+int initialize_players(struct player players[],int numPlayers);
 
 
 

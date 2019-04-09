@@ -32,24 +32,32 @@ void initialize_board(square board[NUM_ROWS][NUM_COLUMNS]){
  * Input: the array of players to be initialized
  * Output: The number of players of the game
  */
-int initialize_players(player players[]){
+
+int initialize_players(player players[],int numplayers){
     int nump;
     char tempname[10];
     innp:
     printf("Enter the number of players: \n");
     scanf("%d",&nump);
+    //stores number of players
+    int numPlayers = nump;
+    //get char clears the white space after scanf so fgets() works from the first loop interation
+    getchar();
+
+//if statement to ensure that there are between 2 and 6 players
     if(nump < 2 || nump > 6){
         printf("There must be between 2 and 6 players\n");
         goto innp;
     }
     int loop = nump + 1;
- for(int i=0;i<loop;i++){  
-        
-        printf("Enter Player %d's name: ",i);
-        gets(players[i].name);
-    
+    //for loop in order to name players and store those player names in the struct "players"
+ for(int i=1; i<loop;i++){ 
+
+        printf("Enter Player %d's name:",i);
+        fgets(players[i].name,20,stdin);
+      //  players[i].col = color[i];
+        printf("Color assigned = %s",players[i].col);
     }
-   
      return 0;
 }
     
