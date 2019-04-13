@@ -33,14 +33,14 @@ void initialize_board(square board[NUM_ROWS][NUM_COLUMNS]){
  * Output: The number of players of the game
  */
 
-int initialize_players(player players[],int numplayers){
+int initialize_players(player players[],int numPlayers){
     int nump;
     char tempname[10];
     innp:
     printf("Enter the number of players: \n");
     scanf("%d",&nump);
     //stores number of players
-    int numPlayers = nump;
+     numPlayers = nump;
     //get char clears the white space after scanf so fgets() works from the first loop interation
     getchar();
 
@@ -55,9 +55,9 @@ int initialize_players(player players[],int numplayers){
 
         printf("Enter Player %d's name:",i);
         fgets(players[i].name,20,stdin);
-      //  players[i].col = color[i];
-        printf("Color assigned = %s",players[i].col);
     }
+    //outputs total players
+    printf("Total Players: %d\n",numPlayers);
      return 0;
 }
     
