@@ -76,9 +76,10 @@ void place_tokens(square board[NUM_ROWS][NUM_COLUMNS], player players[], int num
 
     for(int i =0;i<4;i++){
         for(int j=0;j<numPlayers;j++){
-            printf("Player %s please select a square\n",players[j].name);
+            printf("Player %d please select a square\n",j);
             scanf("%d",&selectedSquare);
             /*implement: if the square contains the minimum num tokens and does not have a token of the same color of the player*/
+           // if(selectedSquare == minNumOfTokens && != )
 
             board[selectedSquare][0].stack =(token *) malloc(sizeof(token));
             board[selectedSquare][0].stack->col = players[j].col;
@@ -95,22 +96,17 @@ void place_tokens(square board[NUM_ROWS][NUM_COLUMNS], player players[], int num
 }
 
 
-/*
- * Place tokens in the first column of the board
- * 
- * Input: board - a 6x9 array of squares that represents the board
- *        players - the array of the players
- *        numPlayers - the number of players  
- */
-
 void play_game(square board[NUM_ROWS][NUM_COLUMNS], player players[], int numPlayers){
-    for(int i=0;i<numPlayers;i++){
-    printf("Press R to roll the dice");
+  
+  for(int i=0;i<numPlayers;i++){
+    int play = i+1;
+    printf("Player %d's turn\n",play);
+    
     int dice= (rand() % 6)+ 1; 
     printf("Dice Roll %d\n", dice); 
     srand(time(NULL));
-    }
-    //TO BE IMPLEMENTED
+    
+  }
 }
 
 

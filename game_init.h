@@ -33,6 +33,7 @@ typedef struct square{
 typedef struct player{
     char name[20];
     enum color col;
+    
     int numTokensLastCol;
 }player;
 
@@ -57,5 +58,6 @@ void initialize_board(square board[NUM_ROWS][NUM_COLUMNS]);
  */
 int initialize_players(struct player players[],int numPlayers );
 
+ 
 
 

@@ -55,11 +55,23 @@ int initialize_players(player players[],int numPlayers){
 
         printf("Enter Player %d's name:",i);
         fgets(players[i].name,20,stdin);
+
+        printf("%s",players[1].col);
+
     }
+    //assigning player colors
+     players[1].col = RED;
+     players[2].col = BLU;
+     players[3].col = ORANGE;
+     players[4].col = PINK;
+     players[5].col = GREEN;
+     players[6].col = YELLOW;
+
+     printf("player 3's color: %d",players[3].col);
+
+    
     //outputs total players
     printf("Total Players: %d\n",numPlayers);
      return numPlayers;
 }
     
-   
-     
