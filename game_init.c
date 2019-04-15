@@ -58,7 +58,7 @@ int initialize_players(player players[],int numPlayers){
     }
     //outputs total players
     printf("Total Players: %d\n",numPlayers);
-     return 0;
+     return numPlayers;
 }
     
    

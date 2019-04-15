@@ -26,6 +26,8 @@ typedef struct square{
      enum stype type;
      //the stack of tokens that can be placed on the board square
      token * stack;      
+//number of tokens of a square
+     int numTokens;
 }square;
 
 typedef struct player{
@@ -53,7 +55,7 @@ void initialize_board(square board[NUM_ROWS][NUM_COLUMNS]);
  * Output: The number of players of the game
  *
  */
-int initialize_players(struct player players[],int numPlayers);
+int initialize_players(struct player players[],int numPlayers );
 
 
 

@@ -1,5 +1,7 @@
 #include "game_init.h"
 #include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
 
 void printLine();
 
@@ -70,6 +72,26 @@ void printLine(){
 void place_tokens(square board[NUM_ROWS][NUM_COLUMNS], player players[], int numPlayers){
     // TO BE IMPLEMENTED
     int minNumOfTokens = 0;
+    int selectedSquare = 0;
+
+    for(int i =0;i<4;i++){
+        for(int j=0;j<numPlayers;j++){
+            printf("Player %s please select a square\n",players[j].name);
+            scanf("%d",&selectedSquare);
+            /*implement: if the square contains the minimum num tokens and does not have a token of the same color of the player*/
+
+            board[selectedSquare][0].stack =(token *) malloc(sizeof(token));
+            board[selectedSquare][0].stack->col = players[j].col;
+            board[selectedSquare][0].numTokens++;
+
+            //updates the minimum number of Tokens
+            if(((numPlayers * i)+ j +1) % NUM_ROWS ==0)
+            minNumOfTokens++;
+            
+
+    
+        }
+    }
 }
 
 
@@ -82,6 +104,12 @@ void place_tokens(square board[NUM_ROWS][NUM_COLUMNS], player players[], int num
  */
 
 void play_game(square board[NUM_ROWS][NUM_COLUMNS], player players[], int numPlayers){
+    for(int i=0;i<numPlayers;i++){
+    printf("Press R to roll the dice");
+    int dice= (rand() % 6)+ 1; 
+    printf("Dice Roll %d\n", dice); 
+    srand(time(NULL));
+    }
     //TO BE IMPLEMENTED
 }
 
