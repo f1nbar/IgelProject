@@ -76,38 +76,47 @@ void place_tokens(square board[NUM_ROWS][NUM_COLUMNS], player players[], int num
 
     for(int i =0;i<4;i++){
         for(int j=0;j<numPlayers;j++){
+            int player = j+1;
             restart:     
-            printf("Player %d please select a square\n",j);
+            printf("Player %d please select a square\n",player);
             scanf("%d",&selectedSquare);
-            /*implement: if the square contains the minimum num tokens and does not have a token of the same color of the player*/
-          /* if(players[j].toke.col == board[selectedSquare][0].stack->col ){
-               printf("Can't place token on the same color\n");
-               goto restart;
-           } */
+            if(selectedSquare > 5){
+                printf("Pick a square between 0 and 5");
+                goto restart;
+            }
           
-            board[selectedSquare][0].stack =(token *) malloc(sizeof(token));
+            board[selectedSquare][0].stack=(token *) malloc(sizeof(token));
             board[selectedSquare][0].stack->col = players[j].toke.col;
             board[selectedSquare][0].numTokens++;
 
             //updates the minimum number of Tokens
             if(((numPlayers * i)+ j +1) % NUM_ROWS ==0)
             minNumOfTokens++;
-            
-            void print_board(square board[NUM_ROWS][NUM_COLUMNS]);
-           
-            
-
-        
+            print_board(board);
         }
     }
+      
+      print_board(board);
 }
 
 
 void play_game(square board[NUM_ROWS][NUM_COLUMNS], player players[], int numPlayers){
+  int choice;
+  printf("****TIME TO PLAY!****\n\n\n");
   
+
   for(int i=0;i<numPlayers;i++){
     int play = i+1;
     printf("Player %d's turn\n",play);
+    printf("Would you like to move a token up or down?\n Y or N");
+    scanf("%c",choice);
+    if(choice == 'Y'){
+       
+    }
+    else{
+
+    }
+
     
     int dice= (rand() % 6)+ 1; 
     printf("Rolling...");   

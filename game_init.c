@@ -58,12 +58,12 @@ int initialize_players(player players[],int numPlayers){
 
     }
     //assigning player colors
-     players[1].toke.col = RED;
-     players[2].toke.col = BLU;
-     players[3].toke.col = GREEN;
-     players[4].toke.col = YELLOW;
-     players[5].toke.col = PINK;
-     players[6].toke.col = ORANGE;
+     players[0].toke.col = RED;
+     players[1].toke.col = BLU;
+     players[2].toke.col = GREEN;
+     players[3].toke.col = YELLOW;
+     players[4].toke.col = PINK;
+     players[5].toke.col = ORANGE;
 //switch statement to let players know their color
      switch(nump){
          case 2: 
