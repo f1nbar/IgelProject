@@ -87,6 +87,15 @@ void place_tokens(square board[NUM_ROWS][NUM_COLUMNS], player players[], int num
             //if statement to make sure all empty squares are filled
            if(board[selectedSquare][0].stack != 0 && board[0][0].stack == 0 || board[selectedSquare][0].stack != 0 && board[1][0].stack == 0 || board[selectedSquare][0].stack != 0 && board[2][0].stack == 0 || board[selectedSquare][0].stack != 0 && board[3][0].stack == 0 || board[selectedSquare][0].stack != 0 && board[4][0].stack == 0 || board[selectedSquare][0].stack != 0 && board[5][0].stack == 0){
                printf("You must fil all other squares first\n");
+               goto restart;
+           }
+            //if statement to make sure player chooses smallest stack
+          if(board[selectedSquare][0].stack > board[0][0].stack || board[selectedSquare][0].stack > board[1][0].stack == 0 || board[selectedSquare][0].stack > board[2][0].stack|| board[selectedSquare][0].stack > board[3][0].stack || board[selectedSquare][0].stack > board[4][0].stack|| board[selectedSquare][0].stack > board[5][0].stack){
+               printf("You must choose the smallest stack\n");
+               goto restart;
+           }
+           if( players[j].toke.col == board[selectedSquare][0].stack->col){
+               printf("same colour");
            }
           
             board[selectedSquare][0].stack=(token *) malloc(sizeof(token));
@@ -128,11 +137,12 @@ void play_game(square board[NUM_ROWS][NUM_COLUMNS], player players[], int numPla
        //prints board
        print_board(board);
     } 
-    
+    srand(time(NULL));
     int dice= (rand() % 6)+ 1; 
     printf("Rolling...");   
     printf("Dice Roll: %d\n", dice); 
-    srand(time(NULL));
+  //  board[dice][0]
+    
     
   }
 }
