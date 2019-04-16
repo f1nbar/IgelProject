@@ -81,7 +81,7 @@ void place_tokens(square board[NUM_ROWS][NUM_COLUMNS], player players[], int num
             printf("Player %d please select a square\n",player);
             scanf("%d",&selectedSquare);
             if(selectedSquare > 5){
-                printf("Pick a square between 0 and 5");
+                printf("Pick a square between 0 and 5\n");
                 goto restart;
             }
             //if statement to make sure all empty squares are filled
@@ -140,9 +140,15 @@ void play_game(square board[NUM_ROWS][NUM_COLUMNS], player players[], int numPla
     } 
     srand(time(NULL));
     int dice= (rand() % 6)+ 1; 
+    int move;
     printf("Rolling...");   
     printf("Dice Roll: %d\n", dice); 
-  //  board[dice][0]
+    printf("Pick a column in row %d to move that token accross: ",dice);
+    scanf("%d",&move);
+    int moveacc = move + 1;
+    board[dice][moveacc].stack = board[dice][move].stack;
+
+    print_board(board);
     
     
   }
