@@ -88,15 +88,16 @@ void place_tokens(square board[NUM_ROWS][NUM_COLUMNS], player players[], int num
            if(board[selectedSquare][0].stack != 0 && board[0][0].stack == 0 || board[selectedSquare][0].stack != 0 && board[1][0].stack == 0 || board[selectedSquare][0].stack != 0 && board[2][0].stack == 0 || board[selectedSquare][0].stack != 0 && board[3][0].stack == 0 || board[selectedSquare][0].stack != 0 && board[4][0].stack == 0 || board[selectedSquare][0].stack != 0 && board[5][0].stack == 0){
                printf("You must fil all other squares first\n");
                goto restart;
+               
            }
             //if statement to make sure player chooses smallest stack
-          if(board[selectedSquare][0].stack > board[0][0].stack || board[selectedSquare][0].stack > board[1][0].stack == 0 || board[selectedSquare][0].stack > board[2][0].stack|| board[selectedSquare][0].stack > board[3][0].stack || board[selectedSquare][0].stack > board[4][0].stack|| board[selectedSquare][0].stack > board[5][0].stack){
+          if(j >= 5 && board[selectedSquare][0].stack > board[0][0].stack || j >= 5 && board[selectedSquare][0].stack > board[1][0].stack == 0 || j >= 5 && board[selectedSquare][0].stack > board[2][0].stack|| j >= 5 && board[selectedSquare][0].stack > board[3][0].stack || j >= 5 && board[selectedSquare][0].stack > board[4][0].stack|| j >= 5 && board[selectedSquare][0].stack > board[5][0].stack){
                printf("You must choose the smallest stack\n");
                goto restart;
            }
-           if( players[j].toke.col == board[selectedSquare][0].stack->col){
+          /* if( players[j].toke.col == board[selectedSquare][0].stack->col){
                printf("same colour");
-           }
+           } */
           
             board[selectedSquare][0].stack=(token *) malloc(sizeof(token));
             board[selectedSquare][0].stack->col = players[j].toke.col;
