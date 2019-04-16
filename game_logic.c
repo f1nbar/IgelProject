@@ -101,22 +101,25 @@ void place_tokens(square board[NUM_ROWS][NUM_COLUMNS], player players[], int num
 
 
 void play_game(square board[NUM_ROWS][NUM_COLUMNS], player players[], int numPlayers){
-  int choice;
   printf("****TIME TO PLAY!****\n\n\n");
   
 
   for(int i=0;i<numPlayers;i++){
     int play = i+1;
+    int choice;
+    int tokemove,tokedest;
     printf("Player %d's turn\n",play);
-    printf("Would you like to move a token up or down?\n Y or N");
-    scanf("%c",choice);
-    if(choice == 'Y'){
-       
-    }
-    else{
-
-    }
-
+    printf("Press Y to move token veritcally, N to skip\n");
+    scanf(" %c",&choice); 
+    if(choice == 'Y'){ 
+       printf("Select the square with token of yours to move up or down:\n");
+       scanf(" %d",&tokemove);
+       printf("Select the destination square with your token:\n");
+       scanf(" %d",&tokedest);
+       board[tokedest][0].stack = board[tokemove][0].stack;
+       printf("Token Moved!");
+       print_board(board);
+    } 
     
     int dice= (rand() % 6)+ 1; 
     printf("Rolling...");   
