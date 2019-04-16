@@ -56,18 +56,48 @@ int initialize_players(player players[],int numPlayers){
         printf("Enter Player %d's name:",i);
         fgets(players[i].name,20,stdin);
 
-        printf("%s",players[1].col);
-
     }
     //assigning player colors
-     players[1].col = RED;
-     players[2].col = BLU;
-     players[3].col = ORANGE;
-     players[4].col = PINK;
-     players[5].col = GREEN;
-     players[6].col = YELLOW;
-
-     printf("player 3's color: %d",players[3].col);
+     players[1].toke.col = RED;
+     players[2].toke.col = BLU;
+     players[3].toke.col = GREEN;
+     players[4].toke.col = YELLOW;
+     players[5].toke.col = PINK;
+     players[6].toke.col = ORANGE;
+//switch statement to let players know their color
+     switch(nump){
+         case 2: 
+         printf("player 1 = RED\n");
+         printf("player 2 = BLUE\n");
+         break;
+         case 3: 
+         printf("player 1 = RED\n");
+         printf("player 2 = BLUE\n");
+         printf("player 3 = GREEN\n");
+         break;
+         case 4:
+         printf("player 1 = RED\n");
+         printf("player 2 = BLUE\n");
+         printf("player 3 = GREEN\n");
+         printf("player 4 = YELLOW\n");
+         break;
+         case 5:
+         printf("player 1 = RED\n");
+         printf("player 2 = BLUE\n");
+         printf("player 3 = GREEN\n");
+         printf("player 4 = YELLOW\n");
+         printf("player 5 = PINK\n");
+         break;
+         case 6:
+         printf("player 1 = RED\n");
+         printf("player 2 = BLUE\n");
+         printf("player 3 = GREEN\n");
+         printf("player 4 = YELLOW\n");
+         printf("player 5 = PINK\n");
+         printf("player 6 = ORANGE\n");
+         break;
+     }
+   
 
     
     //outputs total players

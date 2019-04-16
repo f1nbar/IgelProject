@@ -32,8 +32,9 @@ typedef struct square{
 
 typedef struct player{
     char name[20];
-    enum color col;
+    struct token toke;
     
+
     int numTokensLastCol;
 }player;
 
