@@ -95,10 +95,16 @@ void place_tokens(square board[NUM_ROWS][NUM_COLUMNS], player players[], int num
                printf("You must choose the smallest stack\n");
                goto restart;
            }
-          /* if( players[j].toke.col == board[selectedSquare][0].stack->col){
-               printf("same colour");
-           } */
+
+            if(board[selectedSquare][0].stack == NULL || board[selectedSquare][0].stack->col != players[j].toke.col){
+             goto cont;
+           }
+           else{
+             printf("Cannot stack on same color!\n");
+             goto restart;
+           }
           
+            cont: 
             board[selectedSquare][0].stack=(token *) malloc(sizeof(token));
             board[selectedSquare][0].stack->col = players[j].toke.col;
             board[selectedSquare][0].numTokens++;
@@ -128,8 +134,14 @@ void play_game(square board[NUM_ROWS][NUM_COLUMNS], player players[], int numPla
     scanf(" %c",&choice); 
     //if statement based on player choice
     if(choice == 'Y'){ 
+       again:
        printf("Select the square with token of yours to move up or down:\n");
        scanf(" %d",&tokemove);
+       if(board[tokemove][0].stack->col != players[i].toke.col){
+           printf("Not one of your tokens!");
+           goto again;
+
+       }
        printf("Select the destination square with your token:\n");
        scanf(" %d",&tokedest);
        //moves token on board
