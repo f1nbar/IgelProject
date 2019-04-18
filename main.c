@@ -1,6 +1,7 @@
 
 #include "game_init.h"
 #include "game_logic.h"
+#include <stdlib.h>
 
 
 /*
@@ -8,6 +9,10 @@
  */
 int main(int argc, char** argv) {
     
+    struct stack_elem *top = NULL;
+        //pointer to the current element of the stack
+    struct stack_elem *curr = NULL;
+
     //the board is defined as a 2-Dimensional array of squares
     square board[NUM_ROWS][NUM_COLUMNS];
     

@@ -85,7 +85,7 @@ void place_tokens(square board[NUM_ROWS][NUM_COLUMNS], player players[], int num
                 goto restart;
             }
             //if statement to make sure all empty squares are filled
-           if(board[selectedSquare][0].stack != 0 && board[0][0].stack == 0 || board[selectedSquare][0].stack != 0 && board[1][0].stack == 0 || board[selectedSquare][0].stack != 0 && board[2][0].stack == 0 || board[selectedSquare][0].stack != 0 && board[3][0].stack == 0 || board[selectedSquare][0].stack != 0 && board[4][0].stack == 0 || board[selectedSquare][0].stack != 0 && board[5][0].stack == 0){
+            if(board[selectedSquare][0].stack != 0 && board[0][0].stack == 0 || board[selectedSquare][0].stack != 0 && board[1][0].stack == 0 || board[selectedSquare][0].stack != 0 && board[2][0].stack == 0 || board[selectedSquare][0].stack != 0 && board[3][0].stack == 0 || board[selectedSquare][0].stack != 0 && board[4][0].stack == 0 || board[selectedSquare][0].stack != 0 && board[5][0].stack == 0){
                printf("You must fil all other squares first\n");
                goto restart;
                
@@ -121,11 +121,11 @@ void place_tokens(square board[NUM_ROWS][NUM_COLUMNS], player players[], int num
 
 
 void play_game(square board[NUM_ROWS][NUM_COLUMNS], player players[], int numPlayers){
+    int loop = numPlayers * 4;
   printf("****TIME TO PLAY!****\n\n\n");
-  
 //for loop based on the number of players
-  for(int i=0;i<numPlayers;i++){
-    
+ 
+  for(int i=0;i<loop;i++){
     int choice;
     int tokemove,tokedest; //assigning variables to move tokens
     printf("Player %d 's turn\n",i);
@@ -164,10 +164,12 @@ void play_game(square board[NUM_ROWS][NUM_COLUMNS], player players[], int numPla
     int move;
     printf("Rolling...");   
     printf("Dice Roll: %d\n", dice); 
+    repick:
     printf("Pick a column in row %d to move that token accross: ",dice);
     scanf("%d",&move);
-     if(board[dice][move].stack == board[dice][move].stack == NULL){
+     if(board[dice][move].stack ==  NULL){
          printf("No token to move accross! Pick again!\n");
+         goto repick;
      }
     int moveacc = move + 1;
     board[dice][moveacc].stack = board[dice][move].stack;

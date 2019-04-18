@@ -1,8 +1,33 @@
 //number of rows of the board
+#include <stdlib.h>
+#include <stdio.h>
 #define NUM_ROWS 6
 //number of columns of the board
 #define NUM_COLUMNS 9
+//struct that represents the stack
+struct stack_elem{
+    int data;
+    struct stack_elem *next;
+} stack;
 
+//struct that adds an element on top of the stack 
+static const struct stack_elem * push(int value, struct stack_elem *top){
+    struct stack_elem *curr = top;
+    top = malloc(sizeof(stack));
+    top->data = value;
+    top->next = curr;
+    return top;
+}
+//struct that prints top token of stack and removes it
+static const struct stack_elem * pop(struct stack_elem *top){
+        struct stack_elem *curr = top;
+        if(curr!= NULL) {
+         top = curr->next;
+         printf("Stack Data: %d\n", curr->data);
+         free(curr);
+        }
+        return top;
+}
 
 //types of squares
 enum stype{
