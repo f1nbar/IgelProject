@@ -125,10 +125,10 @@ void play_game(square board[NUM_ROWS][NUM_COLUMNS], player players[], int numPla
   
 //for loop based on the number of players
   for(int i=0;i<numPlayers;i++){
-    int play = i+1;
+    
     int choice;
     int tokemove,tokedest; //assigning variables to move tokens
-    printf("Player %d's turn\n",play);
+    printf("Player %d 's turn\n",i);
     //asks players if they wish to move their token vertically
     printf("Press Y to move token vertically, N to skip\n");
     scanf(" %c",&choice); 
@@ -142,8 +142,17 @@ void play_game(square board[NUM_ROWS][NUM_COLUMNS], player players[], int numPla
            goto again;
 
        }
+       newdest:
        printf("Select the destination square with your token:\n");
        scanf(" %d",&tokedest);
+       int tokedestplus = tokemove+1;
+       int tokedestminus = tokemove-1;
+       //ensures that player can only move token up or down one square
+       if(tokedest > tokedestplus || tokedest < tokedestminus){
+           printf("Can only move one up or one down");
+           goto newdest;
+
+       }
        //moves token on board
        board[tokedest][0].stack = board[tokemove][0].stack;
        printf("Token Moved!\n");
@@ -157,6 +166,9 @@ void play_game(square board[NUM_ROWS][NUM_COLUMNS], player players[], int numPla
     printf("Dice Roll: %d\n", dice); 
     printf("Pick a column in row %d to move that token accross: ",dice);
     scanf("%d",&move);
+     if(board[dice][move].stack == board[dice][move].stack == NULL){
+         printf("No token to move accross! Pick again!\n");
+     }
     int moveacc = move + 1;
     board[dice][moveacc].stack = board[dice][move].stack;
 
