@@ -20,7 +20,7 @@ void initialize_board(square board[NUM_ROWS][NUM_COLUMNS]){
                 //creates a normal square otherwise
                 board[i][j].type = NORMAL;
             }
-            board[i][j].stack = NULL;
+            board[i][j].stack[board[i][j].top].col = VOID;
         }
     }
 }
