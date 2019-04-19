@@ -122,11 +122,16 @@ void play_game(square board[NUM_ROWS][NUM_COLUMNS], player players[], int numPla
     int loop = numPlayers * 4;
   printf("****TIME TO PLAY!****\n\n\n");
 //for loop based on the number of players
+<<<<<<< HEAD
  
   for(int i=0;i<loop;i++){
+=======
+  for(int i=0;i<numPlayers;i++){
+    int play = i+1;
+>>>>>>> parent of a519232... game_play updates
     int choice;
     int tokemove,tokedest; //assigning variables to move tokens
-    printf("Player %d 's turn\n",i);
+    printf("Player %d's turn\n",play);
     //asks players if they wish to move their token vertically
     printf("Press Y to move token vertically, N to skip\n");
     scanf(" %c",&choice); 
@@ -140,17 +145,8 @@ void play_game(square board[NUM_ROWS][NUM_COLUMNS], player players[], int numPla
            goto again;
 
        }
-       newdest:
        printf("Select the destination square with your token:\n");
        scanf(" %d",&tokedest);
-       int tokedestplus = tokemove+1;
-       int tokedestminus = tokemove-1;
-       //ensures that player can only move token up or down one square
-       if(tokedest > tokedestplus || tokedest < tokedestminus){
-           printf("Can only move one up or one down");
-           goto newdest;
-
-       }
        //moves token on board
        board[tokedest][0].stack[SIZE] = board[tokemove][0].stack[SIZE];
        printf("Token Moved!\n");
@@ -165,10 +161,13 @@ void play_game(square board[NUM_ROWS][NUM_COLUMNS], player players[], int numPla
     repick:
     printf("Pick a column in row %d to move that token accross: ",dice);
     scanf("%d",&move);
+<<<<<<< HEAD
      if(board[dice][move].stack[board[dice][move].top].col ==  VOID){
          printf("No token to move accross! Pick again!\n");
          goto repick;
      }
+=======
+>>>>>>> parent of a519232... game_play updates
     int moveacc = move + 1;
     board[dice][moveacc].stack[SIZE] = board[dice][move].stack[SIZE];
 
