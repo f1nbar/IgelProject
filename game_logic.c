@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-
+int top = -1;
 void printLine();
 
 /*
@@ -70,7 +70,7 @@ void printLine(){
  *        numPlayers - the number of players  
  */
 void place_tokens(square board[NUM_ROWS][NUM_COLUMNS], player players[], int numPlayers){
-    // TO BE IMPLEMENTED
+   
     int minNumOfTokens = 0;
     int selectedSquare = 0;
 
@@ -90,22 +90,22 @@ void place_tokens(square board[NUM_ROWS][NUM_COLUMNS], player players[], int num
                goto restart;
                
            }
-            //if statement to make sure player chooses smallest stack
-         /*    if(j >= 5 && board[selectedSquare][0].stack[SIZE] > board[0][0].stack[SIZE] || j >= 5 && board[selectedSquare][0].stack[SIZE] > board[1][0].stack[SIZE] == 0 || j >= 5 && board[selectedSquare][0].stack[SIZE] > board[2][0].stack[SIZE]|| j >= 5 && board[selectedSquare][0].stack[SIZE] > board[3][0].stack[SIZE] || j >= 5 && board[selectedSquare][0].stack[SIZE] > board[4][0].stack[SIZE]|| j >= 5 && board[selectedSquare][0].stack[SIZE] > board[5][0].stack[SIZE]){
+        /*   //if statement to make sure player chooses smallest stack
+             if(j >= 5 && board[selectedSquare][0].stack[board[selectedSquare][0]){
                printf("You must choose the smallest stack\n");
                goto restart;
            }*/
  
-          /*    if(board[selectedSquare][0].stack[board[selectedSquare][0].top] ==  || board[selectedSquare][0].stack[board[selectedSquare][0].top]->col != players[j].toke.col){
+         /*   if(board[selectedSquare][0].stack[board[selectedSquare][0].top] ==  || board[selectedSquare][0].stack[board[selectedSquare][0].top]->col != players[j].toke.col){
              goto cont;
            }
            else{
              printf("Cannot stack on same color!\n");
              goto restart;
-           } 
-          */
+           } */
+          
             cont: 
-           // board[selectedSquare][0].stack[board[selectedSquare][0].top] = (token) malloc(sizeof(token));
+           // board[selectedSquare][0].stack[board[selectedSquare][0]].top = malloc(sizeof(token));
             board[selectedSquare][0].stack[board[selectedSquare][0].top].col = players[j].toke.col;
             board[selectedSquare][0].numTokens++;
 
@@ -114,7 +114,8 @@ void place_tokens(square board[NUM_ROWS][NUM_COLUMNS], player players[], int num
             minNumOfTokens++;
             print_board(board);
         }
-    }            
+    }    
+      print_board(board);        
 }
 
 void play_game(square board[NUM_ROWS][NUM_COLUMNS], player players[], int numPlayers){
@@ -176,5 +177,16 @@ void play_game(square board[NUM_ROWS][NUM_COLUMNS], player players[], int numPla
     
   }
 }
+ 
 
+/*
+void push(int data) {
 
+   if(!isfull()) {
+      top = top + 1;   
+      stack[top] = data;
+   } else {
+      printf("Square is Full.\n");
+   }
+}
+*/
