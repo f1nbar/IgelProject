@@ -27,7 +27,7 @@ int main(int argc, char** argv) {
     print_board(board);
     
     //creates the players
-    numPlayers = initialize_players(players,numPlayers);
+   numPlayers = initialize_players(players,numPlayers);
 
     //asks each player to place their tokens
     //on the first column of the board

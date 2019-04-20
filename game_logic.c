@@ -38,7 +38,7 @@ void print_board(square board[NUM_ROWS][NUM_COLUMNS]){
         //if the square (i,j) is occupied,
         //c is assigned the initial of the color of the token that occupies the square
         for (int j = 0; j < NUM_COLUMNS; j++){
-            if(board[i][j].stack[board[i][j].top].col != VOID){
+            if(board[i][j].stack[0].col != NOCOL){
                 c = print_token(board[i][j].stack[board[i][j].top]);
             }
             //if the square (i,j) is empty
@@ -73,8 +73,8 @@ void place_tokens(square board[NUM_ROWS][NUM_COLUMNS], player players[], int num
    
     int minNumOfTokens = 0;
     int selectedSquare = 0;
-
-    for(int i =0;i<4;i++){
+//note was 4
+    for(int i =0;i<10;i++){
         for(int j=0;j<numPlayers;j++){
             int player = j+1;
             restart:     
@@ -85,18 +85,19 @@ void place_tokens(square board[NUM_ROWS][NUM_COLUMNS], player players[], int num
                 goto restart;
             }
             //if statement to make sure all empty squares are filled 
-           if(board[selectedSquare][0].stack[board[selectedSquare][0].top].col == VOID ){
+         /*  if(board[selectedSquare][0].stack[board[selectedSquare][0].top].col == NOCOL ){
                printf("You must fil all other squares first\n");
                goto restart;
-               
-           }
+               }
+               */
+           
         /*   //if statement to make sure player chooses smallest stack
              if(j >= 5 && board[selectedSquare][0].stack[board[selectedSquare][0]){
                printf("You must choose the smallest stack\n");
                goto restart;
            }*/
  
-         /*   if(board[selectedSquare][0].stack[board[selectedSquare][0].top] ==  || board[selectedSquare][0].stack[board[selectedSquare][0].top]->col != players[j].toke.col){
+        /*    if(board[selectedSquare][0].stack[board[selectedSquare][0].top].col == players[j].toke.col || board[selectedSquare][0].stack[board[selectedSquare][0].top].col != NOCOL  ){
              goto cont;
            }
            else{
@@ -104,10 +105,10 @@ void place_tokens(square board[NUM_ROWS][NUM_COLUMNS], player players[], int num
              goto restart;
            } */
           
-            cont: 
-           // board[selectedSquare][0].stack[board[selectedSquare][0]].top = malloc(sizeof(token));
+           cont: 
+        //    board[selectedSquare][0].stack[board[selectedSquare][0].top].col =   (token *) malloc(sizeof(token));
             board[selectedSquare][0].stack[board[selectedSquare][0].top].col = players[j].toke.col;
-            board[selectedSquare][0].numTokens++;
+            board[selectedSquare][0].numTokens++; 
 
             //updates the minimum number of Tokens
             if(((numPlayers * i)+ j +1) % NUM_ROWS ==0)
@@ -122,16 +123,11 @@ void play_game(square board[NUM_ROWS][NUM_COLUMNS], player players[], int numPla
     int loop = numPlayers * 4;
   printf("****TIME TO PLAY!****\n\n\n");
 //for loop based on the number of players
-<<<<<<< HEAD
- 
+  
   for(int i=0;i<loop;i++){
-=======
-  for(int i=0;i<numPlayers;i++){
-    int play = i+1;
->>>>>>> parent of a519232... game_play updates
     int choice;
     int tokemove,tokedest; //assigning variables to move tokens
-    printf("Player %d's turn\n",play);
+    printf("Player %d 's turn\n",i);
     //asks players if they wish to move their token vertically
     printf("Press Y to move token vertically, N to skip\n");
     scanf(" %c",&choice); 
@@ -145,8 +141,17 @@ void play_game(square board[NUM_ROWS][NUM_COLUMNS], player players[], int numPla
            goto again;
 
        }
+       newdest:
        printf("Select the destination square with your token:\n");
        scanf(" %d",&tokedest);
+       int tokedestplus = tokemove+1;
+       int tokedestminus = tokemove-1;
+       //ensures that player can only move token up or down one square
+       if(tokedest > tokedestplus || tokedest < tokedestminus){
+           printf("Can only move one up or one down");
+           goto newdest;
+
+       }
        //moves token on board
        board[tokedest][0].stack[SIZE] = board[tokemove][0].stack[SIZE];
        printf("Token Moved!\n");
@@ -161,13 +166,10 @@ void play_game(square board[NUM_ROWS][NUM_COLUMNS], player players[], int numPla
     repick:
     printf("Pick a column in row %d to move that token accross: ",dice);
     scanf("%d",&move);
-<<<<<<< HEAD
-     if(board[dice][move].stack[board[dice][move].top].col ==  VOID){
+     if(board[dice][move].stack[board[dice][move].top].col ==  NOCOL){
          printf("No token to move accross! Pick again!\n");
          goto repick;
      }
-=======
->>>>>>> parent of a519232... game_play updates
     int moveacc = move + 1;
     board[dice][moveacc].stack[SIZE] = board[dice][move].stack[SIZE];
 

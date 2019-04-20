@@ -12,7 +12,7 @@ enum stype{
 
 //colors of tokens
 enum color {
-    RED, BLU, GREEN, YELLOW, PINK, ORANGE, VOID
+    NOCOL, RED, BLU, GREEN, YELLOW, PINK, ORANGE
 };
 
 //defines a token. 
@@ -28,6 +28,8 @@ typedef struct square{
      enum stype type;
      //the stack of tokens that can be placed on the board square
      token stack[SIZE];      
+        
+
 //number of tokens of a square
      int numTokens;
      //top value for stack

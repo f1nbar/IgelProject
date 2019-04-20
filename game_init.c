@@ -8,7 +8,7 @@
  * Input: board - a 6x9 array of squares
  *
  */
-void initialize_board(square board[NUM_ROWS][NUM_COLUMNS]){
+ void initialize_board(square board[NUM_ROWS][NUM_COLUMNS]){
    
     for (int i =0; i< NUM_ROWS; i++){
         for(int j =0; j < NUM_COLUMNS; j++){
@@ -20,11 +20,14 @@ void initialize_board(square board[NUM_ROWS][NUM_COLUMNS]){
                 //creates a normal square otherwise
                 board[i][j].type = NORMAL;
             }
-            board[i][j].stack[board[i][j].top].col = VOID;
+            board[i][j].stack[0].col = NOCOL;
+               //board[i][j].stack[board[i][j].top].col = VOID;
         }
     }
 }
-    
+
+
+
     
  /*
  * This function creates players for the first time
