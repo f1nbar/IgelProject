@@ -84,23 +84,24 @@ void place_tokens(square board[NUM_ROWS][NUM_COLUMNS], player players[], int num
                 printf("Pick a square between 0 and 5\n");
                 goto restart;
             }
-      /*      //if statement to make sure all empty squares are filled 
+           //if statement to make sure all empty squares are filled 
            if(j > 5 && board[selectedSquare][0].stack[board[selectedSquare][0].top].col == NOCOL ){
                printf("You must fil all other squares first\n");
                goto restart;
                }
-               */
+               
            
         /*    //if statement to make sure player chooses smallest stack
             if(j >= 5 && board[selectedSquare][0].stack[board[selectedSquare][0].top].col > board[0][0].stack[board[0][0].top].col || board[selectedSquare][0].stack[board[selectedSquare][0].top].col >  board[1][0].stack[board[1][0].top].col || board[selectedSquare][0].stack[board[selectedSquare][0].top].col > board[2][0].stack[board[2][0].top].col  || board[selectedSquare][0].stack[board[selectedSquare][0].top].col > board[3][0].stack[board[3][0].top].col  || board[selectedSquare][0].stack[board[selectedSquare][0].top].col > board[4][0].stack[board[4][0].top].col  ||board[selectedSquare][0].stack[board[selectedSquare][0].top].col > board[5][0].stack[board[5][0].top].col)
                printf("You must choose the smallest stack\n");
                goto restart; */
          
-        /*  //if statement to make sure that players can stack on their own color
+          //if statement to make sure that players can stack on their own color
           if(board[selectedSquare][0].stack[board[selectedSquare][0].top].col == players[j].toke.col && board[selectedSquare][0].stack[board[selectedSquare][0].top].col != NOCOL  ){
              printf("Cannot stack on same color!\n");
              goto restart;
-           }*/
+          }
+           
          
            // board[selectedSquare][0].stack[0] = players[j].toke.col; //(token *) malloc(sizeof(token));
             board[selectedSquare][0].top =  board[selectedSquare][0].top + 1;
@@ -152,7 +153,9 @@ void play_game(square board[NUM_ROWS][NUM_COLUMNS], player players[], int numPla
        }
        //moves token on board
        //implement pop and push 
-       board[tokedest][0].stack[SIZE] = board[tokemove][0].stack[SIZE];
+       board[tokedest][0].top = board[tokedest][0].top +1;
+       board[tokemove][0].top = board[tokemove][0].top -1;
+       board[tokedest][0].stack[board[tokedest][0].top].col = players[i].toke.col;
        printf("Token Moved!\n");
        //prints board
        print_board(board);
@@ -171,7 +174,11 @@ void play_game(square board[NUM_ROWS][NUM_COLUMNS], player players[], int numPla
      }
     int moveacc = move + 1;
     //implement pop and push 
-    board[dice][moveacc].stack[SIZE] = board[dice][move].stack[SIZE];
+ /*
+    board[dice][moveacc].stack[board[dice][moveacc].top] = board[dice][move].stack[board[dice][move].top];
+    board[dice][move].top =  board[dice][move].top =-1;
+    board[dice][moveacc].top =  board[dice][moveacc].top + 1;
+    */
 
     print_board(board);
     
