@@ -28,8 +28,6 @@ typedef struct square{
      enum stype type;
      //the stack of tokens that can be placed on the board square
      token stack[SIZE];      
-        
-
 //number of tokens of a square
      int numTokens;
      //top value for stack

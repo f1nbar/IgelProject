@@ -73,8 +73,8 @@ void place_tokens(square board[NUM_ROWS][NUM_COLUMNS], player players[], int num
    
     int minNumOfTokens = 0;
     int selectedSquare = 0;
-//note was 4
-    for(int i =0;i<10;i++){
+
+    for(int i =0;i<4;i++){
         for(int j=0;j<numPlayers;j++){
             int player = j+1;
             restart:     
@@ -85,28 +85,24 @@ void place_tokens(square board[NUM_ROWS][NUM_COLUMNS], player players[], int num
                 goto restart;
             }
             //if statement to make sure all empty squares are filled 
-         /*  if(board[selectedSquare][0].stack[board[selectedSquare][0].top].col == NOCOL ){
+           if(j > 5 && board[selectedSquare][0].stack[board[selectedSquare][0].top].col == NOCOL ){
                printf("You must fil all other squares first\n");
                goto restart;
                }
-               */
+               
            
-        /*   //if statement to make sure player chooses smallest stack
-             if(j >= 5 && board[selectedSquare][0].stack[board[selectedSquare][0]){
+            //if statement to make sure player chooses smallest stack
+             if(j >= 5 && board[selectedSquare][0].stack[board[selectedSquare][0].top].col)
                printf("You must choose the smallest stack\n");
                goto restart;
-           }*/
- 
-        /*    if(board[selectedSquare][0].stack[board[selectedSquare][0].top].col == players[j].toke.col || board[selectedSquare][0].stack[board[selectedSquare][0].top].col != NOCOL  ){
-             goto cont;
-           }
-           else{
+         
+          //if statement to make sure that players can stack on their own color
+          if(board[selectedSquare][0].stack[board[selectedSquare][0].top].col == players[j].toke.col && board[selectedSquare][0].stack[board[selectedSquare][0].top].col != NOCOL  ){
              printf("Cannot stack on same color!\n");
              goto restart;
-           } */
-          
-           cont: 
-        //    board[selectedSquare][0].stack[board[selectedSquare][0].top].col =   (token *) malloc(sizeof(token));
+           }
+         
+           // board[selectedSquare][0].stack[0] = players[j].toke.col; //(token *) malloc(sizeof(token));
             board[selectedSquare][0].stack[board[selectedSquare][0].top].col = players[j].toke.col;
             board[selectedSquare][0].numTokens++; 
 
