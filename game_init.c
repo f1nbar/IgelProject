@@ -9,7 +9,7 @@
  *
  */
  void initialize_board(square board[NUM_ROWS][NUM_COLUMNS]){
-   
+
     for (int i =0; i< NUM_ROWS; i++){
         for(int j =0; j < NUM_COLUMNS; j++){
             //creates an obstacle square at positions (0,3), (1,6), (2,4), (3,5), (4,2) and (5,7)
@@ -21,11 +21,16 @@
                 board[i][j].type = NORMAL;
             }
             board[i][j].stack[0].col = NOCOL;
-               //board[i][j].stack[board[i][j].top].col = VOID;
         }
     }
-}
+     //assigns top value for stack to -1 for all squares on board
+    for(int i=0;i < NUM_ROWS; i++) {
+        for(int j=0; j < NUM_COLUMNS; j++){
+            board[i][j].top = -1;
+        }
+    }
 
+}
 
 
     
@@ -67,6 +72,8 @@ int initialize_players(player players[],int numPlayers){
      players[3].toke.col = YELLOW;
      players[4].toke.col = PINK;
      players[5].toke.col = ORANGE;
+
+      
 //switch statement to let players know their color
      switch(nump){
          case 2: 
