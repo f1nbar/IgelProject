@@ -126,7 +126,8 @@ void play_game(square board[NUM_ROWS][NUM_COLUMNS], player players[], int numPla
   for(int i=0;i<loop;i++){
     int choice;
     int tokemove,tokedest; //assigning variables to move tokens
-    printf("Player %d 's turn\n",i);
+    int play = i+1;
+    printf("Player %d 's turn\n",play);
     //asks players if they wish to move their token vertically
     printf("Press Y to move token vertically, N to skip\n");
     scanf(" %c",&choice); 
@@ -166,7 +167,7 @@ void play_game(square board[NUM_ROWS][NUM_COLUMNS], player players[], int numPla
     printf("Rolling...");   
     printf("Dice Roll: %d\n", dice); 
     repick:
-    printf("Pick a column in row %d to move that token accross: ",dice);
+    printf("Pick a column so that a token in %d moves accross: ",dice);
     scanf("%d",&move);
      if(board[dice][move].stack[board[dice][move].top].col ==  NOCOL){
          printf("No token to move accross! Pick again!\n");
@@ -174,11 +175,12 @@ void play_game(square board[NUM_ROWS][NUM_COLUMNS], player players[], int numPla
      }
     int moveacc = move + 1;
     //implement pop and push 
- /*
-    board[dice][moveacc].stack[board[dice][moveacc].top] = board[dice][move].stack[board[dice][move].top];
-    board[dice][move].top =  board[dice][move].top =-1;
-    board[dice][moveacc].top =  board[dice][moveacc].top + 1;
-    */
+
+;
+    board[dice][move].top =  board[dice][move].top + -1;
+    board[dice][moveacc].top = board[dice][moveacc].top + 1;
+    board[dice][moveacc].stack[board[dice][moveacc].top].col = players[i].toke.col;
+
 
     print_board(board);
     
@@ -187,14 +189,3 @@ void play_game(square board[NUM_ROWS][NUM_COLUMNS], player players[], int numPla
 }
  
 
-/*
-void push(int data) {
-
-   if(!isfull()) {
-      top = top + 1;   
-      stack[top] = data;
-   } else {
-      printf("Square is Full.\n");
-   }
-}
-*/
