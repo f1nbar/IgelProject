@@ -1,6 +1,7 @@
 
 #include "game_init.h"
 #include "game_logic.h"
+#include <stdlib.h>
 
 
 /*
@@ -8,6 +9,8 @@
  */
 int main(int argc, char** argv) {
     
+
+
     //the board is defined as a 2-Dimensional array of squares
     square board[NUM_ROWS][NUM_COLUMNS];
     
@@ -24,8 +27,8 @@ int main(int argc, char** argv) {
     print_board(board);
     
     //creates the players
-    numPlayers = initialize_players(players);
-    
+   numPlayers = initialize_players(players,numPlayers);
+
     //asks each player to place their tokens
     //on the first column of the board
     place_tokens(board, players, numPlayers);

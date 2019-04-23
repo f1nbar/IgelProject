@@ -1,8 +1,10 @@
 //number of rows of the board
+#include <stdlib.h>
+#include <stdio.h>
+#define SIZE 100
 #define NUM_ROWS 6
 //number of columns of the board
 #define NUM_COLUMNS 9
-
 
 //types of squares
 enum stype{
@@ -10,7 +12,7 @@ enum stype{
 
 //colors of tokens
 enum color {
-    RED, BLU, GREEN, YELLOW, PINK, ORANGE
+    NOCOL, RED, BLU, GREEN, YELLOW, PINK, ORANGE
 };
 
 //defines a token. 
@@ -25,14 +27,22 @@ typedef struct square{
     //A square can be a NORMAL or an OBSTACLE square
      enum stype type;
      //the stack of tokens that can be placed on the board square
-     token * stack;      
+     token stack[SIZE];      
+//number of tokens of a square
+     int numTokens;
+     //top value for stack
+     int top;
 }square;
 
 typedef struct player{
     char name[20];
-    enum color col;
+    struct token toke;
     int numTokensLastCol;
 }player;
+
+//creating array to use as stack
+struct token stack[SIZE];
+
 
 
 
@@ -51,7 +61,8 @@ void initialize_board(square board[NUM_ROWS][NUM_COLUMNS]);
  * Output: The number of players of the game
  *
  */
-int initialize_players(struct player players[]);
+int initialize_players(struct player players[],int numPlayers );
 
+ 
 
 
