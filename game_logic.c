@@ -182,9 +182,9 @@ void play_game(square board[NUM_ROWS][NUM_COLUMNS], player players[], int numPla
             }
             //moves token on board
             //implement pop and push
-            board[tokemoverow][tokemovecol].top = board[tokemoverow][tokemovecol].top - 1;
             board[tokedest][tokemovecol].top = board[tokedest][tokemovecol].top + 1;
-            board[tokedest][tokemovecol].stack[board[tokedest][tokemovecol].top].col = players[i].toke.col;
+            board[tokedest][tokemovecol].stack[board[tokedest][tokemovecol].top].col = board[tokemoverow][tokemovecol].stack[board[tokemoverow][tokemovecol].top].col;
+            board[tokemoverow][tokemovecol].top = board[tokemoverow][tokemovecol].top - 1;
             board[tokedest][tokemovecol].numTokens++;
             printf("Token moved to row %d\n", tokedest);
             //prints board
@@ -212,9 +212,9 @@ void play_game(square board[NUM_ROWS][NUM_COLUMNS], player players[], int numPla
         int moveacc = move + 1;
         //implement pop and push
 
-        board[dice][move].top = board[dice][move].top + -1;
         board[dice][moveacc].top = board[dice][moveacc].top + 1;
-        board[dice][moveacc].stack[board[dice][moveacc].top].col = players[i].toke.col;
+        board[dice][moveacc].stack[board[dice][moveacc].top].col =  board[dice][move].stack[board[dice][move].top].col;
+        board[dice][move].top = board[dice][move].top + -1;
         board[dice][moveacc].numTokens++;
               i++;
               if (i >= numPlayers){
