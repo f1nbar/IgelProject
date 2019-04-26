@@ -103,14 +103,14 @@ void place_tokens(square board[NUM_ROWS][NUM_COLUMNS], player players[], int num
                 goto restart;
             }
             //if statement to make sure all empty squares are filled beofre stacking
-          if (  board[selectedSquare][0].stack[0].col != NOCOL  )
+          if ( j > 6 && board[selectedSquare][0].stack[0].col != NOCOL  )
             {
                 printf("You must fill all other squares first\n");
                 goto restart;
             } 
 
-            //ifstatement to ensure that player chooses smallest stack
-            if (board[selectedSquare][0].numTokens == minNumOfTokens && board[selectedSquare][0].stack == NOCOL || board[selectedSquare][0].stack[board[selectedSquare][0].top].col != players[j].toke.col)
+             //ifstatement to ensure that player chooses smallest stack
+            if ( j > 6 && board[selectedSquare][0].numTokens > board[0][0].numTokens || j > 6 && board[selectedSquare][0].numTokens > board[1][0].numTokens || j > 6 && board[selectedSquare][0].numTokens > board[2][0].numTokens || j > 6 && board[selectedSquare][0].numTokens > board[3][0].numTokens || j > 6 && board[selectedSquare][0].numTokens > board[4][0].numTokens || j > 6 && board[selectedSquare][0].numTokens > board[5][0].numTokens )
             {
                 printf("You must choose the smallest stack\n");
                 goto restart;
