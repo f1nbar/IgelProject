@@ -62,15 +62,16 @@ innp:
         printf("There must be between 2 and 6 players\n");
         goto innp;
     }
-    int loop = nump + 1;
+    
     //for loop in order to name players and store those player names in the struct "players"
-    for (int i = 1; i < loop; i++)
+    for (int i = 0; i < nump; i++)
     {
-
-        printf("Enter Player %d's name:", i);
+        int print = i + 1;
+        printf("Enter Player %d's name:", print);
         fgets(players[i].name, 20, stdin);
-        strtok(players[i].name, "\n"); 
+        strtok(players[i].name, "\n");
     }
+    
     //assigning player colors
     players[0].toke.col = RED;
     players[1].toke.col = BLU;
