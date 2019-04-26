@@ -215,15 +215,14 @@ void play_game(square board[NUM_ROWS][NUM_COLUMNS], player players[], int numPla
         board[dice][moveacc].top = board[dice][moveacc].top + 1;
         board[dice][moveacc].stack[board[dice][moveacc].top].col =  board[dice][move].stack[board[dice][move].top].col;
         board[dice][move].top = board[dice][move].top + -1;
-        board[dice][moveacc].numTokens++;
-              i++;
-              if (i >= numPlayers){
-              i = 0;
-             }
+        board[dice][moveacc].numTokens++;   
+         
+
+        }
         print_board(board);
        
      }
-}
+
         
     
 

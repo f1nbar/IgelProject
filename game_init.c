@@ -69,6 +69,7 @@ innp:
 
         printf("Enter Player %d's name:", i);
         fgets(players[i].name, 20, stdin);
+        strtok(players[i].name, "\n"); 
     }
     //assigning player colors
     players[0].toke.col = RED;

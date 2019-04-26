@@ -1,6 +1,7 @@
 //number of rows of the board
 #include <stdlib.h>
 #include <stdio.h>
+#include<string.h>
 #define SIZE 100
 #define NUM_ROWS 6
 //number of columns of the board
