@@ -215,30 +215,52 @@ void play_game(square board[NUM_ROWS][NUM_COLUMNS], player players[], int numPla
         board[dice][moveacc].top = board[dice][moveacc].top + 1;
         board[dice][moveacc].stack[board[dice][moveacc].top].col =  board[dice][move].stack[board[dice][move].top].col;
         board[dice][move].top = board[dice][move].top + -1;
-        board[dice][moveacc].numTokens++;   
-
-        if(players[i].numTokensLastCol == 3){
-             printf("%s Wins!",players[i].name);
-           }
-           
-         
-             print_board(board);
-
-   /*                  for(int k = 0;k <11;k++){
-           for(int l = 0; l < 7;l++){
-       if(board[l][8].stack[k].col == players[l].toke.col){
-           players[l].numTokensLastCol++;
-       }
-       }
-       }*/
-       
+        board[dice][moveacc].numTokens++;
+ //if statements to cechk all squares in last column for tokens
+                  for(int k = 0; k < 7;k++){
+          if(board[0][8].stack[k].col == players[k].toke.col){
+          players[k].numTokensLastCol++;
         }
-        print_board(board);
+                  }
+              for(int k = 0; k < 7;k++){
+          if(board[1][8].stack[k].col == players[k].toke.col){
+          players[k].numTokensLastCol++;
+        }
+              }
+              for(int k = 0; k < 7;k++){
+          if(board[2][8].stack[k].col == players[k].toke.col){
+          players[k].numTokensLastCol++;
+        }
+              }
+               for(int k = 0; k < 7;k++){
+           if(board[3][8].stack[k].col == players[k].toke.col){
+           players[k].numTokensLastCol++;
+        }
+               }
+               for(int k = 0; k < 7;k++){
+           if(board[4][8].stack[k].col == players[k].toke.col){
+          players[k].numTokensLastCol++;
+        }
+               }
+               for(int k = 0; k < 7;k++){
+             if(board[5][8].stack[k].col == players[k].toke.col){
+            players[k].numTokensLastCol++;
+        }   
+               }
+ //if a player has three tokens in the final column they win and the game exits
+          if(players[i].numTokensLastCol == 3){
+             printf("%s Wins!",players[i].name);
+             return;
+         }
+           
+             print_board(board);
        
-       }
-     
+     }
+               print_board(board); 
+   }
+ 
+
 
         
     
-
 
