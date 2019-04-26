@@ -33,6 +33,7 @@ void initialize_board(square board[NUM_ROWS][NUM_COLUMNS])
         for (int j = 0; j < NUM_COLUMNS; j++)
         {
             board[i][j].top = -1;
+            board[i][j].stack[0].col = NOCOL;
         }
     }
 }
@@ -62,12 +63,12 @@ innp:
         printf("There must be between 2 and 6 players\n");
         goto innp;
     }
-    int loop = nump + 1;
+    
     //for loop in order to name players and store those player names in the struct "players"
-    for (int i = 1; i < loop; i++)
+    for (int i = 0; i < nump; i++)
     {
-
-        printf("Enter Player %d's name:", i);
+        int print = i+1;
+        printf("Enter Player %d's name:", print);
         fgets(players[i].name, 20, stdin);
         strtok(players[i].name, "\n"); 
     }

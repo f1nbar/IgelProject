@@ -102,15 +102,15 @@ void place_tokens(square board[NUM_ROWS][NUM_COLUMNS], player players[], int num
                 printf("Pick a square between 0 and 5\n");
                 goto restart;
             }
-            //if statement to make sure all empty squares are filled
-         /*   if ( j > 1 && board[selectedSquare][0].stack[0].col == NOCOL || j > 1 && board[selectedSquare][1].stack[0].col == NOCOL || j > 1 && board[selectedSquare][2].stack[0].col == NOCOL || j > 1 && board[selectedSquare][4].stack[0].col == NOCOL || j > 1 && board[selectedSquare][5].stack[0].col == NOCOL)
+            //if statement to make sure all empty squares are filled beofre stacking
+          if (  board[selectedSquare][0].stack[0].col != NOCOL  )
             {
                 printf("You must fill all other squares first\n");
                 goto restart;
-            } */
+            } 
 
             //ifstatement to ensure that player chooses smallest stack
-            if (j > 5 && board[selectedSquare][0].numTokens == minNumOfTokens && board[selectedSquare][0].stack == NOCOL || j > 5 && board[selectedSquare][0].stack[board[selectedSquare][0].top].col != players[j].toke.col)
+            if (board[selectedSquare][0].numTokens == minNumOfTokens && board[selectedSquare][0].stack == NOCOL || board[selectedSquare][0].stack[board[selectedSquare][0].top].col != players[j].toke.col)
             {
                 printf("You must choose the smallest stack\n");
                 goto restart;
@@ -191,6 +191,7 @@ void play_game(square board[NUM_ROWS][NUM_COLUMNS], player players[], int numPla
             print_board(board);
     
     roll:
+    //dice roll, player moves a token in that row accross. they choose the column
         srand(time(NULL));
         int dice = (rand() % 5) + 1;
         int move;
@@ -198,6 +199,7 @@ void play_game(square board[NUM_ROWS][NUM_COLUMNS], player players[], int numPla
         printf("Dice Roll: %d\n", dice);
         printf("Pick a column so that a token in %d moves across:\n", dice);
         scanf("%d", &move);
+        
          if (board[dice][move].stack[board[dice][move].top].col == NOCOL)
         {
             printf("No token to move accross! Pick again!\n");
