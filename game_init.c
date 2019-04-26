@@ -83,34 +83,34 @@ innp:
     switch (nump)
     {
     case 2:
-        printf("player 1 = RED\n");
-        printf("player 2 = BLUE\n");
+        printf("%s = RED\n",players[0].name);
+        printf("%s = BLUE\n",players[1].name);
         break;
     case 3:
-        printf("player 1 = RED\n");
-        printf("player 2 = BLUE\n");
-        printf("player 3 = GREEN\n");
+        printf("%s = RED\n",players[0].name);
+        printf("%s = BLUE\n",players[1].name);
+        printf("%s = GREEN\n",players[2].name);
         break;
     case 4:
-        printf("player 1 = RED\n");
-        printf("player 2 = BLUE\n");
-        printf("player 3 = GREEN\n");
-        printf("player 4 = YELLOW\n");
+        printf("%s = RED\n",players[0].name);
+        printf("%s = BLUE\n",players[1].name);
+        printf("%s = GREEN\n",players[2].name);
+        printf("%s = YELLOW\n",players[3].name);
         break;
     case 5:
-        printf("player 1 = RED\n");
-        printf("player 2 = BLUE\n");
-        printf("player 3 = GREEN\n");
-        printf("player 4 = YELLOW\n");
-        printf("player 5 = PINK\n");
+        printf("%s = RED\n",players[0].name);
+        printf("%s = BLUE\n",players[1].name);
+        printf("%s = GREEN\n",players[2].name);
+        printf("%s = YELLOW\n",players[3].name);
+        printf("%s = PINK\n",players[4].name);
         break;
     case 6:
-        printf("player 1 = RED\n");
-        printf("player 2 = BLUE\n");
-        printf("player 3 = GREEN\n");
-        printf("player 4 = YELLOW\n");
-        printf("player 5 = PINK\n");
-        printf("player 6 = ORANGE\n");
+        printf("%s = RED\n",players[0].name);
+        printf("%s = BLUE\n",players[1].name);
+        printf("%s = GREEN\n",players[2].name);
+        printf("%s = YELLOW\n",players[3].name);
+        printf("%s = PINK\n",players[4].name);
+        printf("%s = ORANGE\n",players[5].name);
         break;
     }
 

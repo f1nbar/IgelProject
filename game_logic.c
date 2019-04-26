@@ -216,12 +216,27 @@ void play_game(square board[NUM_ROWS][NUM_COLUMNS], player players[], int numPla
         board[dice][moveacc].stack[board[dice][moveacc].top].col =  board[dice][move].stack[board[dice][move].top].col;
         board[dice][move].top = board[dice][move].top + -1;
         board[dice][moveacc].numTokens++;   
+
+        if(players[i].numTokensLastCol == 3){
+             printf("%s Wins!",players[i].name);
+           }
+           
          
              print_board(board);
+
+   /*                  for(int k = 0;k <11;k++){
+           for(int l = 0; l < 7;l++){
+       if(board[l][8].stack[k].col == players[l].toke.col){
+           players[l].numTokensLastCol++;
+       }
+       }
+       }*/
+       
         }
         print_board(board);
        
-     }
+       }
+     
 
         
     
