@@ -203,9 +203,9 @@ void play_game(square board[NUM_ROWS][NUM_COLUMNS], player players[], int numPla
             printf("No token to move accross! Pick again!\n");
             i++;
         }
-         if (board[tokemoverow][tokemovecol].type == OBSTACLE && board[0][tokemovecol-1].stack[board[0][tokemovecol-1].top].col == NOCOL || board[tokemoverow][tokemovecol].type == OBSTACLE && board[1][tokemovecol-1].stack[board[1][tokemovecol-1].top].col == NOCOL || board[tokemoverow][tokemovecol].type == OBSTACLE && board[2][tokemovecol-1].stack[board[2][tokemovecol-1].top].col == NOCOL || board[tokemoverow][tokemovecol].type == OBSTACLE && board[3][tokemovecol-1].stack[board[3][tokemovecol-1].top].col == NOCOL || board[tokemoverow][tokemovecol].type == OBSTACLE && board[4][tokemovecol-1].stack[board[4][tokemovecol-1].top].col == NOCOL || board[tokemoverow][tokemovecol].type == OBSTACLE && board[5][tokemovecol-1].stack[board[5][tokemovecol-1].top].col == NOCOL)
+        if (board[dice][move].type == OBSTACLE && board[0][move-1].stack[board[0][move-1].top].col == NOCOL || board[dice][move].type == OBSTACLE && board[1][move-1].stack[board[1][move-1].top].col == NOCOL || board[dice][move].type == OBSTACLE && board[2][move-1].stack[board[2][move-1].top].col == NOCOL || board[dice][move].type == OBSTACLE && board[3][move-1].stack[board[3][move-1].top].col == NOCOL || board[dice][move].type == OBSTACLE && board[4][move-1].stack[board[4][move-1].top].col == NOCOL || board[dice][move].type == OBSTACLE && board[5][move-1].stack[board[5][move-1].top].col == NOCOL)
             {
-                printf("OBSTACLE!\n Can't move until other tokens are in row %d\n", tokemovecol-1);
+                printf("OBSTACLE!\n Can't move until other tokens are in row %d\n", move-1);
                 i++;   
             }
        
@@ -217,7 +217,7 @@ void play_game(square board[NUM_ROWS][NUM_COLUMNS], player players[], int numPla
         board[dice][move].top = board[dice][move].top + -1;
         board[dice][moveacc].numTokens++;   
          
-
+             print_board(board);
         }
         print_board(board);
        
