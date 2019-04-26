@@ -103,13 +103,12 @@ void place_tokens(square board[NUM_ROWS][NUM_COLUMNS], player players[], int num
                 goto restart;
             }
             //if statement to make sure all empty squares are filled
-         /*   if ( j > 1 && board[selectedSquare][0].stack[0].col == NOCOL || j > 1 && board[selectedSquare][1].stack[0].col == NOCOL || j > 1 && board[selectedSquare][2].stack[0].col == NOCOL || j > 1 && board[selectedSquare][4].stack[0].col == NOCOL || j > 1 && board[selectedSquare][5].stack[0].col == NOCOL)
+            if (board[selectedSquare][0].stack[0].col != NOCOL)
             {
                 printf("You must fill all other squares first\n");
                 goto restart;
-            } */
-
-            //ifstatement to ensure that player chooses smallest stack
+            }
+            //if statement to ensure that player chooses smallest stack
             if (j > 5 && board[selectedSquare][0].numTokens == minNumOfTokens && board[selectedSquare][0].stack == NOCOL || j > 5 && board[selectedSquare][0].stack[board[selectedSquare][0].top].col != players[j].toke.col)
             {
                 printf("You must choose the smallest stack\n");
@@ -143,37 +142,33 @@ void play_game(square board[NUM_ROWS][NUM_COLUMNS], player players[], int numPla
    while(i < numPlayers)
     {
         int choice;
-        int tokemoverow, tokemovecol, tokedest; //assigning variables to move tokens
+        int tokemove, tokedest; //assigning variables to move tokens
         int play = i + 1;
         printf("Player %d 's turn\n", play);
         //asks players if they wish to move their token vertically
-        printf("1. Move a token up or down\n 2.Skip\n");
-        scanf(" %d", &choice);
+        printf("Press Y to move token vertically, N to skip\n");
+        scanf(" %c", &choice);
         //if statement based on player choice
-        if (choice == 2)
+        if (choice == 'N' || 'n')
         {
             goto roll;
         }
-         if (choice == 1)
-            again:
-            printf("Select the coordinates[row],[column] of the square containing your token move up or down:\n");
-            scanf(" %d""%d", &tokemoverow,&tokemovecol);
-            if (board[tokemoverow][tokemovecol].stack[board[tokemoverow][tokemovecol].top].col != players[i].toke.col)
+        if (choice == 'Y' || 'y')
+        {
+
+        again:
+            printf("Select the square with token of yours to move up or down:\n");
+            scanf(" %d", &tokemove);
+            if (board[tokemove][0].stack[board[tokemove][0].top].col != players[i].toke.col)
             {
-                printf("Not one of your tokens!\n");
+                printf("Not one of your tokens!");
                 goto again;
             }
-            //checks if token you wish to move is in an obstacle and if so is it able to move
-              if (board[tokemoverow][tokemovecol].type == OBSTACLE && board[0][tokemovecol-1].stack[board[0][tokemovecol-1].top].col == NOCOL || board[tokemoverow][tokemovecol].type == OBSTACLE && board[1][tokemovecol-1].stack[board[1][tokemovecol-1].top].col == NOCOL || board[tokemoverow][tokemovecol].type == OBSTACLE && board[2][tokemovecol-1].stack[board[2][tokemovecol-1].top].col == NOCOL || board[tokemoverow][tokemovecol].type == OBSTACLE && board[3][tokemovecol-1].stack[board[3][tokemovecol-1].top].col == NOCOL || board[tokemoverow][tokemovecol].type == OBSTACLE && board[4][tokemovecol-1].stack[board[4][tokemovecol-1].top].col == NOCOL || board[tokemoverow][tokemovecol].type == OBSTACLE && board[5][tokemovecol-1].stack[board[5][tokemovecol-1].top].col == NOCOL)
-            {
-                printf("OBSTACLE!\n Can't move until other tokens are in row %d\n", tokemovecol-1);
-                goto again;   
-            }
         newdest:
-            printf("Select the destination row for your token in column %d:\n",tokemovecol);
+            printf("Select the destination square with your token:\n");
             scanf(" %d", &tokedest);
-            int tokedestplus = tokemoverow + 1;
-            int tokedestminus = tokemoverow - 1;
+            int tokedestplus = tokemove + 1;
+            int tokedestminus = tokemove - 1;
             //ensures that player can only move token up or down one square
             if (tokedest > tokedestplus || tokedest < tokedestminus)
             {
@@ -182,14 +177,13 @@ void play_game(square board[NUM_ROWS][NUM_COLUMNS], player players[], int numPla
             }
             //moves token on board
             //implement pop and push
-            board[tokedest][tokemovecol].top = board[tokedest][tokemovecol].top + 1;
-            board[tokedest][tokemovecol].stack[board[tokedest][tokemovecol].top].col = board[tokemoverow][tokemovecol].stack[board[tokemoverow][tokemovecol].top].col;
-            board[tokemoverow][tokemovecol].top = board[tokemoverow][tokemovecol].top - 1;
-            board[tokedest][tokemovecol].numTokens++;
+            board[tokedest][0].top = board[tokedest][0].top + 1;
+            board[tokemove][0].top = board[tokemove][0].top - 1;
+            board[tokedest][0].stack[board[tokedest][0].top].col = players[i].toke.col;
             printf("Token moved to row %d\n", tokedest);
             //prints board
             print_board(board);
-    
+        }
     roll:
         srand(time(NULL));
         int dice = (rand() % 5) + 1;
@@ -203,64 +197,21 @@ void play_game(square board[NUM_ROWS][NUM_COLUMNS], player players[], int numPla
             printf("No token to move accross! Pick again!\n");
             i++;
         }
-        if (board[dice][move].type == OBSTACLE && board[0][move-1].stack[board[0][move-1].top].col == NOCOL || board[dice][move].type == OBSTACLE && board[1][move-1].stack[board[1][move-1].top].col == NOCOL || board[dice][move].type == OBSTACLE && board[2][move-1].stack[board[2][move-1].top].col == NOCOL || board[dice][move].type == OBSTACLE && board[3][move-1].stack[board[3][move-1].top].col == NOCOL || board[dice][move].type == OBSTACLE && board[4][move-1].stack[board[4][move-1].top].col == NOCOL || board[dice][move].type == OBSTACLE && board[5][move-1].stack[board[5][move-1].top].col == NOCOL)
-            {
-                printf("OBSTACLE!\n Can't move until other tokens are in row %d\n", move-1);
-                i++;   
-            }
-       
+        
         int moveacc = move + 1;
         //implement pop and push
 
-        board[dice][moveacc].top = board[dice][moveacc].top + 1;
-        board[dice][moveacc].stack[board[dice][moveacc].top].col =  board[dice][move].stack[board[dice][move].top].col;
         board[dice][move].top = board[dice][move].top + -1;
-        board[dice][moveacc].numTokens++;
- //if statements to cechk all squares in last column for tokens
-                  for(int k = 0; k < 7;k++){
-          if(board[0][8].stack[k].col == players[k].toke.col){
-          players[k].numTokensLastCol++;
-        }
-                  }
-              for(int k = 0; k < 7;k++){
-          if(board[1][8].stack[k].col == players[k].toke.col){
-          players[k].numTokensLastCol++;
-        }
-              }
-              for(int k = 0; k < 7;k++){
-          if(board[2][8].stack[k].col == players[k].toke.col){
-          players[k].numTokensLastCol++;
-        }
-              }
-               for(int k = 0; k < 7;k++){
-           if(board[3][8].stack[k].col == players[k].toke.col){
-           players[k].numTokensLastCol++;
-        }
-               }
-               for(int k = 0; k < 7;k++){
-           if(board[4][8].stack[k].col == players[k].toke.col){
-          players[k].numTokensLastCol++;
-        }
-               }
-               for(int k = 0; k < 7;k++){
-             if(board[5][8].stack[k].col == players[k].toke.col){
-            players[k].numTokensLastCol++;
-        }   
-               }
- //if a player has three tokens in the final column they win and the game exits
-          if(players[i].numTokensLastCol == 3){
-             printf("%s Wins!",players[i].name);
-             return;
-         }
-           
-             print_board(board);
+        board[dice][moveacc].top = board[dice][moveacc].top + 1;
+        board[dice][moveacc].stack[board[dice][moveacc].top].col = players[i].toke.col;
+              i++;
+              if (i >= numPlayers){
+              i = 0;
+             }
+        print_board(board);
        
-     }
-               print_board(board); 
-   }
- 
-
-
-        
+           }
+        }
     
+
 
